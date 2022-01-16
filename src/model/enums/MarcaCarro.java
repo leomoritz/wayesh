@@ -1,0 +1,37 @@
+package model.enums;
+
+public enum MarcaCarro {
+
+    FIAT,
+    VOLKSWAGEN,
+    CHEVROLET,
+    HYUNDAI,
+    TOYOTA,
+    JEEP,
+    RENAULT,
+    HONDA,
+    NISSAN,
+    FORD,
+    CAOA_CHERY,
+    PEUGEOT,
+    MITSUBISHI,
+    CITROEN,
+    BMW,
+    VOLVO,
+    MERCEDES_BENZ,
+    AUDI,
+    LAND_ROVER,
+    KIA,
+    GM,
+    IVECO,
+    SUZUKI,
+    MINI,
+    JAC,
+    TROLER,
+    SUBARU,
+    JAGUAR,
+    DODGE,
+    FOTON,
+    LEXUS,
+    PORSCHE;
+}
