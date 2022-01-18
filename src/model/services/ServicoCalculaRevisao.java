@@ -5,7 +5,7 @@ import model.entities.revisao.Revisao;
 import java.time.LocalDate;
 import java.util.Optional;
 
-public class ServicoRevisao {
+public class ServicoCalculaRevisao {
 
     /**
      * Calcula a próxima revisão e salva a revisão atual na lista de últimas revisões do automóvel

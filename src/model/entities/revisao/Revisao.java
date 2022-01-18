@@ -22,7 +22,8 @@ public abstract class Revisao {
     private String descricaoRevisao;
 
     public Revisao(Automovel automovel, LocalDate dataAtualRevisao, Double kilometragemAtual, Double precoRevisao,
-                   String nomeAtendente, String nomeMecanico, String localRevisao) {
+                   String nomeAtendente, String nomeMecanico, String localRevisao, Set<Peca> pecasTrocadas,
+                   Set<Peca> pecasTrocaProximaRevisao) {
         this.nomeRevisao = "Revisão: "
                 + dataAtualRevisao + " - " + automovel.getNomeModelo() + " - " + localRevisao;
         this.automovel = automovel;
@@ -32,13 +33,23 @@ public abstract class Revisao {
         this.nomeAtendente = nomeAtendente;
         this.nomeMecanico = nomeMecanico;
         this.localRevisao = localRevisao;
-        this.pecasTrocadas = new TreeSet<>();
-        this.pecasTrocaProximaRevisao = new TreeSet<>();
+        this.pecasTrocadas = pecasTrocadas;
+        this.pecasTrocaProximaRevisao = pecasTrocaProximaRevisao;
     }
 
     public Revisao(Automovel automovel, String descricaoRevisao, LocalDate dataAtualRevisao, Double kilometragemAtual
-            , Double precoRevisao, String nomeAtendente, String nomeMecanico, String localRevisao) {
-        this(automovel, dataAtualRevisao, kilometragemAtual, precoRevisao, nomeAtendente, nomeMecanico, localRevisao);
+            , Double precoRevisao, String nomeAtendente, String nomeMecanico, String localRevisao,
+                   Set<Peca> pecasTrocadas, Set<Peca> pecasTrocaProximaRevisao) {
+        this(automovel, dataAtualRevisao, kilometragemAtual, precoRevisao, nomeAtendente, nomeMecanico, localRevisao,
+             pecasTrocadas, pecasTrocaProximaRevisao);
+        this.descricaoRevisao = descricaoRevisao;
+    }
+
+    public Revisao(Automovel automovel, String descricaoRevisao, LocalDate dataAtualRevisao, Double kilometragemAtual
+            , Double precoRevisao, String nomeAtendente, String nomeMecanico, String localRevisao,
+                   Set<Peca> pecasTrocadas) {
+        this(automovel, dataAtualRevisao, kilometragemAtual, precoRevisao, nomeAtendente, nomeMecanico, localRevisao,
+             pecasTrocadas, new TreeSet<>());
         this.descricaoRevisao = descricaoRevisao;
     }
 
