@@ -1,5 +1,6 @@
 package model.entities.automovel;
 
+import model.entities.abastecimento.Abastecimento;
 import model.entities.revisao.Revisao;
 import model.enums.*;
 
@@ -19,10 +20,12 @@ public abstract class Automovel {
     private final Double qtdKmParaRevisao; // Verificar no manual do veículo
     private final Integer qtdMesesParaRevisao; // Verificar no manual do veículo
     private final Set<Revisao> ultimasRevisoes;
+    private final Set<Abastecimento> ultimosAbastecimentos;
     private Set<AutomovelCombustivel> tipoCombustivel;
     private AutomovelCategoria categoriaUso;
     private Integer potencia;
     private Integer cilindrada;
+    private Map<LocalDate, Double> kmRodadoPorMes;
     private Double kmProximaRevisao;
     private LocalDate dataProximaRevisao;
 
@@ -40,7 +43,9 @@ public abstract class Automovel {
         this.qtdMesesParaRevisao = qtdMesesParaRevisao;
         this.limiteReservatorioPorCombustivel = limiteReservatorioPorCombustivel;
         this.mediaKmRodoviaPorCombustivel = mediaKmRodoviaPorCombustivel;
+        this.kmRodadoPorMes = new HashMap<>();
         this.ultimasRevisoes = new TreeSet<>();
+        this.ultimosAbastecimentos = new TreeSet<>();
     }
 
     public Automovel(String nomeModelo, Integer anoFabricacao, Integer anoModelo,
@@ -143,6 +148,13 @@ public abstract class Automovel {
         this.cilindrada = cilindrada;
     }
 
+    public Map<LocalDate, Double> getKmRodadoPorMes() {
+        return kmRodadoPorMes;
+    }
+
+    public void setKmRodadoPorMes(Map<LocalDate, Double> kmRodadoPorMes) {
+        this.kmRodadoPorMes = kmRodadoPorMes;
+    }
     public Double getQtdKmParaRevisao() {
         return qtdKmParaRevisao;
     }
@@ -206,6 +218,19 @@ public abstract class Automovel {
 
         if (!getUltimasRevisoes().isEmpty()) {
             return Optional.ofNullable(getUltimasRevisoes());
+        }
+
+        return Optional.empty();
+    }
+
+    public Set<Abastecimento> getUltimosAbastecimentos() {
+        return ultimosAbastecimentos;
+    }
+
+    public Optional<Set<Abastecimento>> listaUltimosAbastecimentos() {
+
+        if (!getUltimosAbastecimentos().isEmpty()) {
+            return Optional.ofNullable(getUltimosAbastecimentos());
         }
 
         return Optional.empty();

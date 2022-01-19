@@ -1,44 +1,57 @@
 package model.entities.abastecimento;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
-public class Abastecimento {
+public class Abastecimento implements Comparable<Abastecimento> {
 
-    private final Double qtdLitros;
+    private final Double qtdLitrosAbastecido;
     private final Double valorAbastecimento;
-    private final Double kilometragemAtual;
     private final LocalDate dataAbastecimento;
-    private LocalDate dataUltimoAbastecimento;
 
-    public Abastecimento(Double qtdLitros, Double valorAbastecimento, Double kilometragemAtual,
+    public Abastecimento(Double qtdLitrosAbastecido, Double valorAbastecimento,
                          LocalDate dataAbastecimento) {
-        this.qtdLitros = qtdLitros;
+        this.qtdLitrosAbastecido = qtdLitrosAbastecido;
         this.valorAbastecimento = valorAbastecimento;
-        this.kilometragemAtual = kilometragemAtual;
         this.dataAbastecimento = dataAbastecimento;
     }
 
-    public Double getQtdLitros() {
-        return qtdLitros;
+    public Double getQtdLitrosAbastecido() {
+        return qtdLitrosAbastecido;
     }
 
     public Double getValorAbastecimento() {
         return valorAbastecimento;
     }
 
-    public Double getKilometragemAtual() {
-        return kilometragemAtual;
-    }
-
     public LocalDate getDataAbastecimento() {
         return dataAbastecimento;
     }
 
-    public LocalDate getDataUltimoAbastecimento() {
-        return dataUltimoAbastecimento;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Abastecimento)) return false;
+        Abastecimento that = (Abastecimento) o;
+        return Objects.equals(getQtdLitrosAbastecido(), that.getQtdLitrosAbastecido()) && Objects.equals(getValorAbastecimento(), that.getValorAbastecimento()) && Objects.equals(getDataAbastecimento(), that.getDataAbastecimento());
     }
 
-    public void setDataUltimoAbastecimento(LocalDate dataUltimoAbastecimento) {
-        this.dataUltimoAbastecimento = dataUltimoAbastecimento;
+    @Override
+    public int hashCode() {
+        return Objects.hash(getQtdLitrosAbastecido(), getValorAbastecimento(), getDataAbastecimento());
+    }
+
+    @Override
+    public int compareTo(Abastecimento o) {
+        return qtdLitrosAbastecido.compareTo(o.qtdLitrosAbastecido)
+                + valorAbastecimento.compareTo(o.valorAbastecimento)
+                + dataAbastecimento.compareTo(o.getDataAbastecimento());
+    }
+
+    @Override
+    public String toString() {
+        return "\nData Abastecimento: " + dataAbastecimento +
+                "\nQuantidade de Litros/m³ abastecidos: " + qtdLitrosAbastecido +
+                "\nValor Abastecimento : R$" + valorAbastecimento;
     }
 }

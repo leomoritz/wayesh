@@ -4,9 +4,8 @@ import model.entities.automovel.Automovel;
 import model.entities.automovel.Carro;
 import model.entities.viagem.Viagem;
 import model.enums.*;
-import model.services.ServicoCalculaViagem;
+import model.services.viagem.ServicoCalculaViagem;
 
-import java.time.LocalDate;
 import java.util.*;
 
 public class ProgramaPrincipal {

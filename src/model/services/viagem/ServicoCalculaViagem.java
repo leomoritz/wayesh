@@ -1,11 +1,9 @@
-package model.services;
+package model.services.viagem;
 
 import model.entities.viagem.Viagem;
 import model.enums.AutomovelCombustivel;
 
-import java.util.*;
-
-public class ServicoCalculaViagem {
+public final class ServicoCalculaViagem {
 
     /*
     https://dicasgnv.com.br/2016/01/01/calculadora-do-gnv-como-calcular-a-economia-no-gas/#:~:text=Com%20GNV%2C%20a
